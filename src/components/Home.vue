@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="directorio-restaurantes">
-      <img class="logo-1" src="@/assets/Imagen0.png" alt="Logo del directorio" loading="lazy">
+      <img class="logo-1" :src="imagenLogo" alt="Logo del directorio" loading="lazy">
       <h1 class="titulo-directorio">Directorio de Restaurantes Max Food</h1>
     </div>
     <nav class="navbar">
@@ -45,28 +45,30 @@
   <footer>
     <p>&copy; 2025 Directorio Gastronómico. Todos los derechos reservados.</p>
     <div class="redes-sociales">
-      <a href="https://twitter.com/" target="_blank"><img src="@/assets/Pajarito.png" alt="Twitter"></a>
-      <a href="https://facebook.com/" target="_blank"><img src="@/assets/Face.png" alt="Facebook"></a>
-      <a href="https://instagram.com/" target="_blank"><img src="@/assets/ins.png" alt="Instagram"></a>
+      <a href="https://twitter.com/" target="_blank"><img :src="imagenTwitter" alt="Twitter"></a>
+      <a href="https://facebook.com/" target="_blank"><img :src="imagenFacebook" alt="Facebook"></a>
+      <a href="https://instagram.com/" target="_blank"><img :src="imagenInstagram" alt="Instagram"></a>
     </div>
   </footer>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue';
+import imagenLogo from '@/assets/Imagen0.png';
+import imagenTwitter from '@/assets/Pajarito.png';
+import imagenFacebook from '@/assets/Face.png';
+import imagenInstagram from '@/assets/ins.png';
+import restaurante1 from '@/assets/restaurante1.png';
+import restaurante2 from '@/assets/restaurante2.png';
+import restaurante3 from '@/assets/restaurante3.png';
 
-export default {
-  setup() {
-    const selectedLanguage = ref('es');
-    const restaurants = ref([
-      { id: 1, name: "La Pizzería Italiana", address: "Av. 10 # 15 - 80 Bogotá", img: "@/assets/restaurante1.png" },
-      { id: 2, name: "El Sabor Mexicano", address: "Cra 12 # 50 - 15 Barranquilla", img: "@/assets/restaurante2.png" },
-      { id: 3, name: "Sushi House", address: "Cra 20 # 45 - 90 Cali", img: "@/assets/restaurante3.png" }
-    ]);
+const selectedLanguage = ref('es');
 
-    return { selectedLanguage, restaurants };
-  }
-};
+const restaurants = ref([
+  { id: 1, name: "La Pizzería Italiana", address: "Av. 10 # 15 - 80 Bogotá", img: restaurante1 },
+  { id: 2, name: "El Sabor Mexicano", address: "Cra 12 # 50 - 15 Barranquilla", img: restaurante2 },
+  { id: 3, name: "Sushi House", address: "Cra 20 # 45 - 90 Cali", img: restaurante3 }
+]);
 </script>
 
 <style scoped>
