@@ -34,6 +34,12 @@
   --color-text: var(--vt-c-text-light-1);
 
   --section-gap: 160px;
+
+  --color-fondo: #fce9d8;
+  --color-cinnamon-latte: #b8957f;
+  --color-caramel-drizzle: #ab7843;
+  --color-cafe-semioscuro: #6d3914;
+  --color-cafe-oscuro: #4c2b08;
 }
 
 @media (prefers-color-scheme: dark) {

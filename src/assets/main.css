@@ -7,6 +7,15 @@
   font-weight: normal;
 }
 
+#navbar {
+  background-color: var(--color-cafe-oscuro);
+  color: blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
 a,
 .green {
   text-decoration: none;
