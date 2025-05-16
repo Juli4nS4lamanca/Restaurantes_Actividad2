@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router/dist/vue-router.esm-browser.js';
 import HomePage from '@/views/HomePage.vue';
 import SearchPage from '@/views/SearchPage.vue';
 import NewRestaurantPage from '@/views/NewRestaurantPage.vue';
