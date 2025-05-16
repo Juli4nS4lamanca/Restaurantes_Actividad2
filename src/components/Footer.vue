@@ -23,7 +23,7 @@ footer {
   color: var(--color-fondo);
   text-align: center;
   padding: 10px;
-  bottom: 0;
+  margin-top: auto;
 }
 .redes-sociales {
   position: fixed;

@@ -9,8 +9,8 @@ import logo from '@/assets/Imagen0.png'
     <nav class="navbar">
       <div class="lista-1">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="search.html">Buscar</a></li>
+          <li><router-link to="/">Inicio</router-link></li>
+          <li><router-link to="/search">Buscar</router-link></li>
           <li><a href="">Nuevo Restaurante</a></li>
         </ul>
       </div>
@@ -25,7 +25,6 @@ import logo from '@/assets/Imagen0.png'
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  max-width: 1000px;
 }
 
 .logo-1 {
