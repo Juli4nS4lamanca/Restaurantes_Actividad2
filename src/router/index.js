@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "../views/HomePage.vue";
+import HomePage from "../views/HomePage.vue";  // ✅ Solo en `views/`
 import SearchPage from "../views/SearchPage.vue";
-import NewRestaurantPage from "../views/NewRestaurantPage.vue"; // ✅ Confirma que este archivo existe en "views/"
+import NewRestaurantPage from "../views/NewRestaurantPage.vue";
 
 const routes = [
   { path: "/", component: HomePage },
   { path: "/search", component: SearchPage },
-  { path: "/new", component: NewRestaurantPage }, // 🔥 Aquí definimos la ruta correctamente
+  { path: "/new", component: NewRestaurantPage },
 ];
 
 const router = createRouter({

@@ -8,21 +8,31 @@ const restaurante = ref({
   image: ""
 });
 
-// Guardar el restaurante en LocalStorage
+const mensaje = ref(""); // ✅ Maneja los mensajes de éxito o error
+
 const guardarRestaurante = () => {
   try {
     if (!restaurante.value.name || !restaurante.value.address || !restaurante.value.image) {
-      console.error("Todos los campos son obligatorios.");
+      mensaje.value = "Todos los campos son obligatorios.";
+      setTimeout(() => mensaje.value = "", 3000);
       return;
     }
 
     const restaurantes = JSON.parse(localStorage.getItem("restaurants")) || [];
+    const existe = restaurantes.some(r => r.name.trim().toLowerCase() === restaurante.value.name.trim().toLowerCase());
+
+    if (existe) {
+      mensaje.value = "Ya existe un restaurante con este nombre.";
+      setTimeout(() => mensaje.value = "", 3000);
+      return;
+    }
+
     restaurantes.push({ ...restaurante.value });
     localStorage.setItem("restaurants", JSON.stringify(restaurantes));
 
-    // Limpiar formulario después de guardar
     restaurante.value = { name: "", description: "", address: "", image: "" };
-    console.log("Restaurante guardado correctamente!");
+    mensaje.value = "¡Restaurante registrado exitosamente!";
+    setTimeout(() => mensaje.value = "", 3000);
   } catch (error) {
     console.error("Error al guardar restaurante:", error);
   }
@@ -45,28 +55,31 @@ const guardarRestaurante = () => {
     <main>
       <section id="form-section">
         <h2>Registra tu Restaurante</h2>
+
+        <div v-if="mensaje" class="success-message">{{ mensaje }}</div> <!-- ✅ Mensaje agregado -->
+
         <form @submit.prevent="guardarRestaurante">
           <fieldset>
             <legend>Información del Restaurante</legend>
 
             <div class="form-group">
               <label for="name">Nombre:</label>
-              <input v-model="restaurante.name" type="text" id="name" placeholder="Ej. La Pizzería Italiana" required maxlength="100">
+              <input v-model="restaurante.name" type="text" id="name" required maxlength="100">
             </div>
 
             <div class="form-group">
               <label for="description">Descripción:</label>
-              <textarea v-model="restaurante.description" id="description" placeholder="Breve descripción..." required maxlength="300"></textarea>
+              <textarea v-model="restaurante.description" id="description" required maxlength="300"></textarea>
             </div>
 
             <div class="form-group">
               <label for="address">Dirección:</label>
-              <input v-model="restaurante.address" type="text" id="address" placeholder="Ej. Calle 20 # 15 - 80, Bogotá" required maxlength="150">
+              <input v-model="restaurante.address" type="text" id="address" required maxlength="150">
             </div>
 
             <div class="form-group">
               <label for="image">Imagen URL:</label>
-              <input v-model="restaurante.image" type="url" id="image" placeholder="https://ejemplo.com/imagen.jpg" required>
+              <input v-model="restaurante.image" type="url" id="image" required>
             </div>
 
             <button type="submit" class="submit-button">Guardar Restaurante</button>
@@ -87,8 +100,23 @@ const guardarRestaurante = () => {
   margin: auto;
   padding: 20px;
 }
-.menu {
-  display: flex;
-  gap: 15px;
+.success-message {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.submit-button {
+  background-color: #ff5733;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.submit-button:hover {
+  background-color: #e64a19;
 }
 </style>
