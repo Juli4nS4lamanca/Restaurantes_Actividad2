@@ -5,44 +5,37 @@ const categoria = document.getElementById("category");
 const btnBuscar = document.getElementById("search-btn");
 const nombreBuscado = document.getElementById("search");
 
-const mostrarRestaurantes= (lista = restaurantes)=>{
-    SearchResults.innerHTML += lista.map(
-        ({name, estrellas, direccion, imagen, categoria})=>
-        `
-            <div class="restaurant-card">
-                    <img src="${imagen}" alt="Restaurante ${name}">
-                    <h3>${name}</h3>
-                    <p>${direccion}</p>
-                    <p>${estrellas} | ${categoria}</p>
-            </div>
-        `
-        ).join("");
+// Función para mostrar restaurantes
+const mostrarRestaurantes = (lista = restaurantes) => {
+    SearchResults.innerHTML = lista.map(({ name, estrellas, direccion, imagen, categoria }) => `
+        <div class="restaurant-card">
+            <img src="${imagen}" alt="Restaurante ${name}">
+            <h3>${name}</h3>
+            <p>${direccion}</p>
+            <p>${estrellas} | ${categoria}</p>
+        </div>
+    `).join("");
 };
 
-
+// Evento para filtrar por categoría
 categoria.addEventListener("change", (e) => {
     SearchResults.innerHTML = "";
-    
-    switch(e.target.value){
-        case "Italiano":
-            mostrarRestaurantes(restaurantes.filter((restaurante) => restaurante.categoria === "Italiano"));
-            break;
-        case "Mexicano":
-            mostrarRestaurantes(restaurantes.filter((restaurante) => restaurante.categoria === "Mexicano"));
-            break;
-        case "Mar":
-            mostrarRestaurantes(restaurantes.filter((restaurante) => restaurante.categoria === "Mar"));
-            break;
-    
-    default:
-        mostrarRestaurantes();
-    }
+    const categoriaSeleccionada = e.target.value;
+    mostrarRestaurantes(
+        categoriaSeleccionada ? restaurantes.filter(restaurante => restaurante.categoria === categoriaSeleccionada)
+        : restaurantes
+    );
 });
 
-btnBuscar.addEventListener("click",()=>{
-    SearchResults.innerHTML= "";
-    mostrarRestaurantes(restaurantes.filter((restaurante)=> restaurante.name.toLowerCase().includes(nombreBuscado.value.toLowerCase())));
-    categoria.value=""
+// Evento para la búsqueda por nombre
+btnBuscar.addEventListener("click", () => {
+    const query = nombreBuscado.value.trim().toLowerCase();
+    if (!query) return; // Evita búsquedas vacías
+
+    SearchResults.innerHTML = "";
+    mostrarRestaurantes(restaurantes.filter(restaurante => restaurante.name.toLowerCase().includes(query)));
+    categoria.value = ""; // Resetear categoría después de la búsqueda
 });
 
+// Inicializar mostrando todos los restaurantes
 mostrarRestaurantes();
