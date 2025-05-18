@@ -31,6 +31,7 @@ const limpiarElementos = () => {
 </script>
 
 <template>
+  <div>
   <section id="search-container">
     <h2>Encuentra tu Restaurante Favorito</h2>
     <input type="text" id="search" v-model="busquedaNombre" placeholder="Escribe un nombre ..." />
@@ -58,6 +59,7 @@ const limpiarElementos = () => {
       <p>⭐ {{ restaurante.estrellas }} | {{ restaurante.categoria }}</p>
     </div>
   </section>
+  </div>
 </template>
 
 <style scoped>
@@ -105,15 +107,6 @@ img{
 
 #search-container button:hover{
     background-color:var(--color-caramel-drizzle);
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 }
 
 #search-results{

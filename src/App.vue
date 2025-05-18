@@ -10,7 +10,9 @@ import { RouterView } from 'vue-router'
   </header>
 
   <main>
-    <RouterView />
+    <transition name="deslizar">
+      <RouterView />
+    </transition>
   </main>
   <footer>
     <Footer />
@@ -18,6 +20,20 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style scoped>
+
+.deslizar-enter-active,
+.deslizar-leave-active{
+  transition: transform 0.3s ease;
+}
+
+.deslizar-enter-from{
+  transform: translateX(-100%);
+}
+
+.deslizar-leave-from{
+  transform: translateX(100%);
+}
+
 footer {
   background-color: var(--color-cafe-oscuro);
   color: var(--color-fondo);

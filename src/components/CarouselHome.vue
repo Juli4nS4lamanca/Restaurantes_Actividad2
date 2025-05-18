@@ -56,12 +56,4 @@ const restaurantesFiltrados1 = computed(() => restaurantes1.value);
   border-radius: 10px;
   animation: fadeIn 1.5s ease-out;
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 </style>

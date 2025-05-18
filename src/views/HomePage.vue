@@ -3,6 +3,7 @@
 import CarouselHome from '@/components/CarouselHome.vue';
 </script>
 <template>
+  <div>
  <div class="header-content">
       <div class="slider-text">
         <h1>¡Bienvenido!</h1>
@@ -14,19 +15,10 @@ import CarouselHome from '@/components/CarouselHome.vue';
       </div>
     </div>
   <CarouselHome/>
+  </div>
 </template>
 
 <style scoped>
-@keyframes deslizarIzquierda {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
 .slider-text {
   animation: deslizarIzquierda 1.5s ease-out;
 }
