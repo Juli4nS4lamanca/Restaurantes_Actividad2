@@ -23,6 +23,11 @@ const limpiarFiltros = () => {
   filtroCategoria.value = ''
 }
 
+const limpiarElementos = () => {
+  localStorage.clear();
+  window.location.reload();
+}
+
 </script>
 
 <template>
@@ -36,6 +41,7 @@ const limpiarFiltros = () => {
       <option value="Mar">Mar</option>
     </select>
     <button id="search-btn" @click="limpiarFiltros">Limpiar</button>
+    <button id="delate-btn" @click="limpiarElementos">Limpiar elementos agregados</button>
   </section>
 
   <!-- 📌 Resultados de búsqueda -->
@@ -133,6 +139,10 @@ img{
 
 .restaurant-card p{
     margin: 0;
+}
+
+#delate-btn{
+  margin-left: 15px;
 }
 
 </style>
