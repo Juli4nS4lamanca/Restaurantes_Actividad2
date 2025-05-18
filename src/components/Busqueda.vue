@@ -2,7 +2,7 @@
 import { restaurantes as restaurantesIniciales } from '@/assets/restaurantes.js'
 import { ref, computed } from 'vue'
 
-const restaurantes = JSON.parse(localStorage.getItem("restaurants")) || [...restaurantesIniciales];
+const restaurantes = JSON.parse(localStorage.getItem("restaurantes")) || [...restaurantesIniciales];
 const listaRestaurantes = ref([...restaurantes])
 const filtroCategoria = ref('')
 const busquedaNombre = ref('')
