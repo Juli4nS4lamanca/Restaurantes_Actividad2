@@ -12,8 +12,22 @@ import { RouterView } from 'vue-router'
   <main>
     <RouterView />
   </main>
-
-  <Footer />
+  <footer>
+    <Footer />
+  </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+footer {
+  background-color: var(--color-cafe-oscuro);
+  color: var(--color-fondo);
+  text-align: center;
+  padding: 10px;
+  margin-top: auto;
+}
+main{
+    max-width: 80%px;
+    margin: auto;
+    padding: 30px;
+} 
+</style>

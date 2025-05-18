@@ -1,9 +1,12 @@
+<script setup>
+import Busqueda from '@/components/Busqueda.vue'
+
+</script>
+
 <template>
-  <div>
-    <h1>Buscar Restaurantes</h1>
-    <p>Aquí puedes buscar restaurantes por nombre o categoría.</p>
-  </div>
+  <Busqueda/>
 </template>
 
-<script setup>
-</script>
+<style scoped>
+
+</style>

@@ -11,7 +11,7 @@ import logo from '@/assets/Imagen0.png'
         <ul>
           <li><router-link to="/">Inicio</router-link></li>
           <li><router-link to="/search">Buscar</router-link></li>
-          <li><a href="">Nuevo Restaurante</a></li>
+          <li><router-link to="/new">Nuevo Restaurante</router-link></li>
         </ul>
       </div>
     </nav>

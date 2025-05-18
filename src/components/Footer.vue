@@ -4,7 +4,6 @@ import imagenFacebook from '@/assets/RedesSociales/Face.png'
 import imagenInstagram from '@/assets/RedesSociales/ins.png'
 </script>
 <template>
-  <footer>
     <p>&copy; 2025 Directorio Gastronómico. Todos los derechos reservados.</p>
     <div class="redes-sociales">
       <a href="https://twitter.com/" target="_blank"><img :src="imagenTwitter" alt="Twitter" /></a>
@@ -15,16 +14,9 @@ import imagenInstagram from '@/assets/RedesSociales/ins.png'
         ><img :src="imagenInstagram" alt="Instagram"
       /></a>
     </div>
-  </footer>
 </template>
 <style scoped>
-footer {
-  background-color: var(--color-cafe-oscuro);
-  color: var(--color-fondo);
-  text-align: center;
-  padding: 10px;
-  margin-top: auto;
-}
+
 .redes-sociales {
   position: fixed;
   right: 20px;
