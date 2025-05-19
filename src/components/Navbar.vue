@@ -12,6 +12,7 @@ import logo from '@/assets/Imagen0.png'
           <li><router-link to="/">Inicio</router-link></li>
           <li><router-link to="/search">Buscar</router-link></li>
           <li><router-link to="/new">Nuevo Restaurante</router-link></li>
+          <li><router-link to="/login">iniciarSesion</router-link></li>
         </ul>
       </div>
     </nav>
