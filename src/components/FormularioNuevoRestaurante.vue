@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { restaurantes as restaurantesIniciales } from '@/assets/restaurantes.js';
 
 
@@ -12,12 +12,17 @@ const restaurante = ref({
 });
 
 const mensaje = ref("");
+const guardadoExitoso = ref(false);
+
+const regexDirecciones = /^(CR|CL|DG|TV|CQ|AV)\s\d{1,3}[A-Z]{0,2}(BIS)?(NORTE|ESTE|OESTE|SUR)?\s\d{1,3}[A-Z]{0,2}(NORTE|ESTE|OESTE|SUR)?-\d{1,3}$/;
+const direccionInvalida = computed(() => !regexDirecciones.test(restaurante.value.direccion));
 
 const guardarRestaurante = () => {
   try {
     if (!restaurante.value.name.trim() || !restaurante.value.direccion.trim() || !restaurante.value.imagen.trim()
         || !restaurante.value.categoria.trim()) {
       mensaje.value = "Todos los campos son obligatorios.";
+      guardadoExitoso.value = false;
       setTimeout(() => mensaje.value = "", 3000);
       return;
     }
@@ -27,18 +32,31 @@ const guardarRestaurante = () => {
 
     if (existe) {
       mensaje.value = "Ya existe un restaurante con este nombre.";
+      guardadoExitoso.value = false;
       setTimeout(() => mensaje.value = "", 3000);
+      return;
+    }
+
+    
+    if(direccionInvalida.value){
+      mensaje.value = "Formato de dirección no valida";
+      guardadoExitoso.value = false;
+      setTimeout(() => mensaje.value = "", 3000 );
       return;
     }
 
     restaurantes.push({ ...restaurante.value });
     localStorage.setItem("restaurantes", JSON.stringify(restaurantes));
 
-    restaurante.value = { name: "", address: "", image: "" };
+    restaurante.value = { name: "", direccion: "", imagen: "", estrellas: "", categoria: "" };
     mensaje.value = "¡Restaurante registrado exitosamente!";
+    guardadoExitoso.value = true;
     setTimeout(() => mensaje.value = "", 3000);
   } catch (error) {
     console.error("Error al guardar restaurante:", error);
+    mensaje.value = "Error al guardar el restaurante";
+    guardadoExitoso.value = false;
+    setTimeout(() => mensaje.value = "", 3000)
   }
 };
 </script>
@@ -50,7 +68,8 @@ const guardarRestaurante = () => {
       <input v-model="restaurante.name" type="text" id="name" required>
 
       <label for="address">Dirección:</label>
-      <input v-model="restaurante.direccion" type="text" id="address" required>
+      <input v-model="restaurante.direccion" type="text" id="address" required placeholder="CL 10AFBIS NORTE 51BBSUR-15">
+      <p v-if="direccionInvalida && restaurante.direccion !=='' " style="color: red;">Formato invalido</p>
 
       <label for="image">Imagen URL:</label>
       <input v-model="restaurante.imagen" type="url" id="image" required>
@@ -69,7 +88,7 @@ const guardarRestaurante = () => {
 
       <button type="submit">Guardar Restaurante</button>
     </form>
-    <div v-if="mensaje" class="success-message">{{ mensaje }}</div>
+    <div v-if="mensaje" :class="{'success-message': guardadoExitoso, 'error-message': !guardadoExitoso}">{{ mensaje }}</div>
   </div>
 </template>
 
@@ -87,6 +106,15 @@ const guardarRestaurante = () => {
   border-radius: 5px;
   margin-top: 10px;
 }
+.error-message {
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
 button {
   background-color: #ff5733;
   color: white;
