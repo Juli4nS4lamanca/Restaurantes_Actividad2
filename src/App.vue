@@ -45,5 +45,5 @@ main{
     max-width: 80%px;
     margin: auto;
     padding: 30px;
-} 
+}
 </style>

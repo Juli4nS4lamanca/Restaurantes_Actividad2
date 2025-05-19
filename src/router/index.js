@@ -1,15 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "../views/HomePage.vue";
-import Login from "../views/Login.vue";
-import Register from "../views/Register.vue";
+import HomePage from "../views/HomePage.vue";  // ✅ Solo en `views/`
+import SearchPage from "../views/SearchPage.vue";
 import NewRestaurantPage from "../views/NewRestaurantPage.vue";
 
 const routes = [
-  { path: "/", component: HomePage },
+  { path: "/", component: HomePage }, // ✅ "component" es la propiedad correcta
   { path: "/search", component: SearchPage },
   { path: "/new", component: NewRestaurantPage },
-  { path: "/login", component: Login },
-  { path: "/register", component: Register }
 ];
 
 const router = createRouter({
@@ -18,3 +15,4 @@ const router = createRouter({
 });
 
 export default router;
+
