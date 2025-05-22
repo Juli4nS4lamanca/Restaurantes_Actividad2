@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/Restaurantes_Actividad2/', // 👈 ¡Esta línea es clave
   plugins: [
     vue(),
     vueDevTools(),
