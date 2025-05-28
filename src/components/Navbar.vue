@@ -32,9 +32,11 @@ import logo from '@/assets/Imagen0.png'
   height: auto;
   margin-right: 15px;
 }
+
 .navbar {
   display: flex;
-  justify-content: flex-end; /* Alinea el menú a la derecha */
+  justify-content: flex-end;
+  /* Alinea el menú a la derecha */
   align-items: center;
   width: 100%;
 }
@@ -56,5 +58,6 @@ import logo from '@/assets/Imagen0.png'
 
 .lista-1 ul li a:hover {
   background-color: var(--color-cafe-semioscuro);
+  transition: all 500ms ease-in-out;
 }
 </style>

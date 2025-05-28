@@ -20,17 +20,16 @@ import { RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-
 .deslizar-enter-active,
-.deslizar-leave-active{
+.deslizar-leave-active {
   transition: transform 0.3s ease;
 }
 
-.deslizar-enter-from{
+.deslizar-enter-from {
   transform: translateX(-100%);
 }
 
-.deslizar-leave-from{
+.deslizar-leave-from {
   transform: translateX(100%);
 }
 
@@ -41,9 +40,10 @@ footer {
   padding: 10px;
   margin-top: auto;
 }
-main{
-    max-width: 80%px;
-    margin: auto;
-    padding: 30px;
+
+main {
+  max-width: 80%px;
+  margin: auto;
+  padding: 30px;
 }
 </style>
